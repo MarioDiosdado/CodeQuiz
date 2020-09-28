@@ -1,0 +1,17 @@
+.container h1{
+    text-align: center;
+}
+
+.container h2{
+    text-align: center;
+}
+
+#button1{
+    display: grid;
+    text-align: center;
+    margin: auto;
+}
+
+.btn-primary {
+    display: block;
+}
