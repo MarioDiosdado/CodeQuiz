@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-
+    //Here we have our global variables
     var doc = document.body;
     var question = doc.querySelector("#question");
     var button = doc.querySelector("#button1");
@@ -29,7 +29,7 @@ $(document).ready(function () {
     button.addEventListener("click", function () {
         question.textContent = ques[0];
         //Here the timer is generated
-       timer = setInterval(function () {
+        timer = setInterval(function () {
             seconds--;
             doc.querySelector("#time").innerHTML = "Time " + seconds;
         }, 1000);
@@ -52,11 +52,11 @@ $(document).ready(function () {
         button.setAttribute("style", "display: none");
         subTitle.setAttribute("style", "display: none");
 
-    // This clears the previous answers
+        // This clears the previous answers
         while (items.firstChild) {
             items.removeChild(items.lastChild);
         }
-    //This generate the buttons
+        //This generate the buttons
         if (quesNext != 5) {
 
             for (i = 0; i < array.length; i++) {
@@ -78,7 +78,7 @@ $(document).ready(function () {
 
 
         }
-    //This makes the question update
+        //This makes the question update and tell us if answers were correct
         doc.querySelectorAll(".btn-primary").forEach(item => {
             item.addEventListener("click", function (event) {
                 quesNext++;
@@ -88,7 +88,7 @@ $(document).ready(function () {
                 var response = event.target.id;
                 var bla = doc.querySelector("#result");
 
-                
+
                 if (quesNext === 1) {
                     if (response != "button3") {
                         seconds = seconds - 10;
@@ -146,7 +146,7 @@ $(document).ready(function () {
     }
 
     var storage;
-
+    //This submit the highscore and put it in local storage
     submit.addEventListener("click", function (event) {
         event.preventDefault();
         forma.setAttribute("style", "display: none");
@@ -159,8 +159,10 @@ $(document).ready(function () {
         localStorage.setItem("user", user);
         storage = localStorage.getItem("user");
     })
-
-    highscore.addEventListener("click", function (event) {
+    //This show us the high score
+        
+        highscore.addEventListener("click", function (event) {
+        storage = localStorage.getItem("user");
         event.preventDefault();
         question.textContent = "Highscores";
         button.setAttribute("style", "display: none");
@@ -170,6 +172,7 @@ $(document).ready(function () {
         doc.querySelector("#rightWrong").innerHTML = "";
         var t = document.createElement("div");
         t.setAttribute("style", "text-align: center");
+        t.textContent = "";
         t.textContent = storage;
         container.appendChild(t);
     })
