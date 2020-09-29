@@ -5,6 +5,8 @@ var question = doc.querySelector("#question");
 var button = doc.querySelector("#button1");
 var items = doc.querySelector("#answersItems");
 var subTitle = doc.querySelector(".subtitle");
+var score = 0;
+var seconds = 60;
 
 
 console.log(question.textContent);
@@ -17,6 +19,10 @@ var ques = ["A very useful tool used during development and debugging for printi
 
 button.addEventListener("click", function () {
     question.textContent = ques[0];
+    setInterval(function(){ 
+        seconds--;
+        doc.querySelector("#time").innerHTML = "Time " + seconds;
+    }, 1000);
     createAnswers(Arr);
 })
 
@@ -28,6 +34,7 @@ var Arr5 = ["strings", "booleans", "alerts", "numbers"];
 var superArr = [Arr, Arr2, Arr3, Arr4, Arr5];
 var quesNext = 0;
 var answerNext = 0;
+
 
 console.log(Arr.length);
 
@@ -43,6 +50,7 @@ function createAnswers(array) {
         var a = array[i];
         var li = document.createElement("button");
         li.className = "btn-primary";
+        li.setAttribute("id", "button"+i);
         li.setAttribute("style", "margin: 5px");
         li.textContent = (i + 1) + ". " + a;
         items.appendChild(li);
@@ -52,12 +60,39 @@ function createAnswers(array) {
 
     
     doc.querySelectorAll(".btn-primary").forEach(item => {
-        item.addEventListener("click", function () {
+        item.addEventListener("click", function (event) {
             quesNext++;
             answerNext++;
             question.textContent = ques[quesNext];
             var x = superArr[answerNext];
+            var response = event.target.id;
             createAnswers(x);
+            if(quesNext === 1){
+                if(response != "button3"){
+                    seconds = seconds - 10;
+                    console.log(seconds);
+                }
+            } else if(quesNext === 2){
+                if(response != "button2"){
+                    seconds = seconds - 10;
+                    console.log(seconds);
+                }
+            } else if(quesNext === 3){
+                if(response != "button3"){
+                    seconds = seconds - 10;
+                    console.log(seconds);
+                }
+            } else if(quesNext === 4){
+                if(response != "button2"){
+                    seconds = seconds - 10;
+                    console.log(seconds);
+                }
+            } else if(quesNext === 5){
+                if(response != "button2"){
+                    seconds = seconds - 10;
+                    console.log(seconds);
+                }
+            }
     
         })
     })
