@@ -169,7 +169,6 @@ $(document).ready(function () {
         forma.setAttribute("style", "display: none");
         subTitle.setAttribute("style", "display: none");
         doc.querySelector("#answersItems").setAttribute("style", "display: none");
-        doc.querySelector("#rightWrong").innerHTML = "";
         var t = document.createElement("div");
         t.setAttribute("style", "text-align: center");
         t.textContent = "";
