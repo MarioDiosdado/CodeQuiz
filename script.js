@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     doc.querySelector("#forma").setAttribute("style", "display: none");
 
-
+    //An array with all questions
     var ques = [
         "A very useful tool used during development and debugging for printing content to the debugger is:",
         "String values must be enclosed within ------ when being assigned to variables",
@@ -35,7 +35,7 @@ $(document).ready(function () {
         }, 1000);
         createAnswers(Arr);
     })
-
+    //Here we have the answers on arrays and then array holding all arrays
     var Arr = ["JavaScript", "terminal / bash", "for loops", "console.log"];
     var Arr2 = ["commas", "culy brackets", "quotes", "parenthesis"];
     var Arr3 = ["numbers and strings", "other arrays", "booleans", "all of the above"];
@@ -52,11 +52,11 @@ $(document).ready(function () {
         button.setAttribute("style", "display: none");
         subTitle.setAttribute("style", "display: none");
 
-
+    // This clears the previous answers
         while (items.firstChild) {
             items.removeChild(items.lastChild);
         }
-
+    //This generate the buttons
         if (quesNext != 5) {
 
             for (i = 0; i < array.length; i++) {
@@ -78,9 +78,7 @@ $(document).ready(function () {
 
 
         }
-        //This makes the question update
-
-
+    //This makes the question update
         doc.querySelectorAll(".btn-primary").forEach(item => {
             item.addEventListener("click", function (event) {
                 quesNext++;
